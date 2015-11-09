@@ -7,7 +7,7 @@ import org.trc.aop.logging.CustomLoggableHandler;
 
 @Configuration
 @EnableAspectJAutoProxy
-public class AspectConfig {
+public class LoggingAspectConfig {
 
 	@Bean
 	public CustomLoggableHandler loggingAspect() {

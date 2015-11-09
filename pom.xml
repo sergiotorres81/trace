@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.trc</groupId>
 	<artifactId>trace</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>trace</name>
 	<description>Tracer for logs</description>
 	<packaging>jar</packaging>
