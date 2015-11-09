@@ -11,7 +11,7 @@ import org.trc.service.DummyService;
 public class DummyServiceImpl implements DummyService {
 
 	private final static Logger logger = LoggerFactory.getLogger(DummyServiceImpl.class);
-	private Integer integerTest;
+	private Integer integerTest = 1;
 
 	/**
 	 * @return the integerTest

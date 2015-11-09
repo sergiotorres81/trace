@@ -1,5 +1,7 @@
 package org.trc.service.impl;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,17 +22,19 @@ public class DummyServiceTest {
 	private DummyService dummyService;
 
 	@Test
-	public void testLoggableAspect() throws Exception {
-		logger.debug("Starting test..");
-		dummyService.helloWorld("Sergio");
-		dummyService.getIntegerTest();
+	public void testHelloWorld() throws Exception {
+		logger.debug("Starting testHelloWorld..");
+		 MatcherAssert.assertThat(
+				 dummyService.helloWorld("DummyServiceTest"),
+		            Matchers.containsString("Hi !!! " + "DummyServiceTest")
+		        );
+	}
+	
+	@Test
+	public void testGetIntegerTest() throws Exception{
+		logger.debug("Starting testGetIntegerTest..");
+		MatcherAssert.assertThat(dummyService.getIntegerTest(), Matchers.lessThanOrEqualTo(1));
 	}
 
-	@Test
-	public void testLoggableAspectWithoutTheInterface() throws Exception {
-		DummyServiceImpl dummy = new DummyServiceImpl();
-		dummy.setIntegerTest(9);
-		dummy.getIntegerTest();
-	}
 
 }

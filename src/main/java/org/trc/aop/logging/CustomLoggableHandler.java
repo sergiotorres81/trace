@@ -19,7 +19,7 @@ public class CustomLoggableHandler {
 	}
 
 	@Before("loggable() ")
-	public void aroundLoggable(JoinPoint joinPoint) throws Throwable {
+	public void beforeLoggable(JoinPoint joinPoint) throws Throwable {
 		String msg = "{Enter: " + joinPoint.getSignature().getDeclaringTypeName() + "."
 				+ joinPoint.getSignature().getName() + "() with argument[s] = " + Arrays.toString(joinPoint.getArgs())
 				+ "}";
