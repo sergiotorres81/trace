@@ -33,5 +33,8 @@ public class DummyServiceImpl implements DummyService {
 		return "Hi !!! " + person;
 	}
 
+	public String helloExceptions() throws Exception {
+		throw new Exception("this is for testing purposes...");
+	}
 
 }

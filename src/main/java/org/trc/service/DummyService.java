@@ -11,5 +11,12 @@ public interface DummyService {
 	 */
 	String helloWorld(String person) throws Exception;
 
+	/**
+	 * Just to test method
+	 * 
+	 * @return
+	 */
 	Integer getIntegerTest();
+
+	String helloExceptions() throws Exception;
 }

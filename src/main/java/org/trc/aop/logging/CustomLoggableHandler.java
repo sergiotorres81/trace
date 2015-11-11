@@ -3,6 +3,7 @@ package org.trc.aop.logging;
 import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -18,13 +19,20 @@ public class CustomLoggableHandler {
 	public void loggable() {
 	}
 
+	@AfterThrowing("loggable()")
+	public void afterLoggable(JoinPoint joinPoint) {
+		logger.error(createLogMessage(joinPoint, "Exceptin"));
+	}
+
 	@Before("loggable() ")
 	public void beforeLoggable(JoinPoint joinPoint) throws Throwable {
-		String msg = "{Enter: " + joinPoint.getSignature().getDeclaringTypeName() + "."
+		logger.debug(createLogMessage(joinPoint, "Enter"));
+	}
+
+	private String createLogMessage(JoinPoint joinPoint, String initial) {
+		return "{" + initial + ": " + joinPoint.getSignature().getDeclaringTypeName() + "."
 				+ joinPoint.getSignature().getName() + "() with argument[s] = " + Arrays.toString(joinPoint.getArgs())
 				+ "}";
-		logger.debug(msg);
-
 	}
 
 }

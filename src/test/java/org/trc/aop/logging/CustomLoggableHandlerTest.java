@@ -23,11 +23,15 @@ public class CustomLoggableHandlerTest {
 	@Test
 	public void testLoggableAspectWithoutTheInterface() throws Exception {
 		dummyService.helloWorld("CustomLoggableHandlerTest");
-		// Mockito.when(dummyService.helloWorld("something"));
-		// DummyServiceImpl dummy = new DummyServiceImpl();
-		// dummy.helloWorld("CustomLoggableHandlerTest");
-		// dummy.setIntegerTest(9);
-		// dummy.getIntegerTest();
+	}
+
+	@Test
+	public void testLoggableAspectThrowException() {
+		try {
+			dummyService.helloExceptions();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+		}
 	}
 
 }
