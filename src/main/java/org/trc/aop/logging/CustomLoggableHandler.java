@@ -3,6 +3,7 @@ package org.trc.aop.logging;
 import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -20,8 +21,13 @@ public class CustomLoggableHandler {
 	}
 
 	@AfterThrowing("loggable()")
-	public void afterLoggable(JoinPoint joinPoint) {
-		logger.error(createLogMessage(joinPoint, "Exceptin"));
+	public void afterException(JoinPoint joinPoint) {
+		logger.error(createLogMessage(joinPoint, "Exception"));
+	}
+
+	@After("loggable() ")
+	public void afterLoggable(JoinPoint joinPoint) throws Throwable {
+		logger.error(createLogMessage(joinPoint, "Leaving"));
 	}
 
 	@Before("loggable() ")
